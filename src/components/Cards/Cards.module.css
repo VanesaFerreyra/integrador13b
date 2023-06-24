@@ -1,0 +1,13 @@
+.container{
+    border: none;
+    border-radius: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    flex-wrap:wrap;
+    padding: 2em ;
+    margin-bottom: 2em;
+    height: fit-content;
+    background-color: rgb(192, 142, 239);
+}
