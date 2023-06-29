@@ -6,14 +6,4 @@
    background-image: url("./image/rick\ imagen.gif");
 }
 
-.nav{
-   display: flex;
-   justify-content: flex-end;
-   align-items: center;
-   background-color: darkslategray;
-   border-radius: 2em;
-   width: 95vw;
-   height: 3em;
-   margin: 1em 0;
-   box-sizing: border-box;
-}
+
