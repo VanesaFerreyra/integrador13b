@@ -1,0 +1,24 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: ridge pink 5px;
+    background-color: rgb(135, 158, 205);
+    width: 25em;
+    flex-direction: column;
+    padding: 1em;
+    margin: 2em;
+
+}
+
+.container button {
+    border: solid red;
+    border-radius: 0.5em;
+    transition: transform 0.3s ease;
+    font-size: 1em;
+    color: rgb(29, 28, 25);
+}
+
+.container button :hover{
+    transform: scale(1.3);
+}

@@ -1,0 +1,8 @@
+.isActive {
+    color: aqua;
+    font-weight: 700;
+}
+
+.inActive {
+    color:rgba(231, 18, 18, 0.882);
+}
