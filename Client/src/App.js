@@ -1,7 +1,7 @@
 import './App.css';
 import axios from 'axios';
-import { Routes, Route } from 'react-router-dom';
-import { useState } from 'react';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import Cards from './components/Cards/Cards.jsx';
 import Nav from './components/Nav/Nav';
 import About from './components/About/About';
@@ -10,8 +10,22 @@ import Error404 from './components/Error404/Error404';
 import Form from './components/Form/Form';
 
 function App() {
-   const [characters, setCharacters] = useState([])
-   
+   const { pathname } = useLocation();
+   const navigate = useNavigate();
+   const [characters, setCharacters] = useState([]);
+   const [access, setAccess] = useState(false);
+   const EMAIL = 'vane@email.com';
+   const PASSWORD = 'contraseña1';
+   function login ({email, password}){
+      if(email === EMAIL && password === PASSWORD){
+         setAccess(true);
+         navigate(`/home`);
+      }
+   }
+
+   useEffect(()=>{
+      !access && navigate('/')
+   },[access])
    
    const onSearch = (id) => {
       if(!id)alert("Ingrese un ID")
@@ -19,7 +33,7 @@ function App() {
          alert(`Ya existe el personaje con el id ${id}`)
          return;
       }
-      axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
+      axios(`http://localhost:3001/rickandmorty/character/${id}`).then(( {data} ) => {
          if (data.name) {
             setCharacters((oldChars) => [...oldChars, data]);
          }
@@ -42,11 +56,12 @@ function App() {
       setCharacters(characters.filter(char => char.id !== id ))
    }
 
+
    return (
       <div className='App'>
-         <Nav onSearch={onSearch} />
+         { pathname !== '/' && <Nav onSearch={onSearch} />}
          <Routes>
-            <Route path="/" element={<Form/>} />
+            <Route path="/" element={<Form login ={login}/>} />
             <Route path="/home" element={
                <Cards characters={characters} onClose={onClose} />} />
             <Route path="/about" element={<About />} />
