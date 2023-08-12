@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import style from "./Nav.module.css";
 import NavLink from "../NavLink/NavLink";
@@ -13,9 +13,10 @@ class Nav extends React.Component {
             <NavLink to={'/home'} >
                 <span>Home</span>
             </NavLink>
-            <Link to={'/about'}>
-                <button>About</button>
-            </Link>
+            <NavLink to={'/about'}>
+                <span>About</span>
+            </NavLink>
+            <NavLink to={'/favorites'}><span>Favorites</span></NavLink>
             <SearchBar onSearch={this.props.onSearch} />
         </nav>
     }
