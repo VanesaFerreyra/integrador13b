@@ -1,11 +1,12 @@
 .nav{
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    background-color: darkslategray;
-    border-radius: 2em;
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    padding-top: 5px;
+    background-color: #848c8c;
+    border-radius: 10px;
     width: 95vw;
     height: 3em;
-    margin: 1em 0;
-    box-sizing: border-box;
+    margin: 10px 10px;
+    
  }

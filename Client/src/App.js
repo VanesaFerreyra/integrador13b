@@ -18,13 +18,18 @@ function App() {
    const [characters, setCharacters] = useState([]);
    const [access, setAccess] = useState(false);
 
-   const EMAIL = 'vane@email.com';
-   const PASSWORD = 'contraseña1';
-
-   function login ({email, password}){
-      if(email === EMAIL && password === PASSWORD){
-         setAccess(true);
-         navigate(`/home`);
+   const URL = 'http://localhost:3001/rickandmorty/'
+   
+   async function login ({email, password}){
+      try {
+         const { data } = await axios(`${URL}login?email=${email}&password=${password}`)
+      
+         const { access } = data;
+         setAccess(access)
+         access && navigate('/home')
+      } catch (error) {
+         //console.log(error);
+         alert('Usuario y/o contraseña incorrecta')
       }
    }
 
@@ -32,31 +37,33 @@ function App() {
       !access && navigate('/')
    },[access])
    
-   const onSearch = (id) => {
+   const onSearch = async (id) => {
       if(!id)alert("Ingrese un ID")
       if(characters.find(char => char.id === parseInt(id))){
          alert(`Ya existe el personaje con el id ${id}`)
          return;
       }
-      //`http://localhost:3000/rickandmorty/character/${id}`
-      axios(`https://rickandmortyapi.com/api/character/${id}`).then(( {data} ) => {
-         if (data.name) {
-            setCharacters((oldChars) => [...oldChars, data]);
-         }
-      }).catch(err => alert(err.response.data.error));
+      try {
+         const{ data } = await axios(`${URL}/character/${id}`)
+
+         setCharacters(oldChars => [...oldChars, data])
+
+      } catch (error) {
+         alert(error.response.data)
+      }
    }
-//funcion onSearch con fetch
+//funcion onSearch con axios
   // const onSearch = (id) => {
-   //   fetch(`https://rickandmortyapi.com/api/character/${id}`)
-   //   .then(response => response.json)
-   //   .then(( data ) => {
-   //      if (data.name) {
-   //       setCharacters((oldChars) => [...oldChars, data]);
-   //    }else{
-      //    alert(!No hay personaje con este ID!)
-   //    }
-   //   })
-   //}
+//   fetch(`https://localhost:3001/rickandmorty/character/${id}`)
+//      .then(response => response.json)
+ //     .then(( data ) => {
+ //        if (data.name) {
+ //         setCharacters((oldChars) => [...oldChars, data]);
+ //      }else{
+ //        alert(No se encontro ese ID)
+ //      }
+ //     })
+//}
  
    function onClose(id) {
       setCharacters(characters.filter(char => char.id !== id ))

@@ -1,9 +1,6 @@
 .App {
    text-align: center;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   background-image: url("./image/rick\ imagen.gif");
+   font-family: cursive;
 }
 
 

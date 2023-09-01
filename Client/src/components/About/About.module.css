@@ -1,0 +1,17 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: white 5px;
+    background-color: rgb(156, 185, 241);
+    width: 25em;
+    flex-direction: column;
+    padding: 2em;
+    margin: 4em;
+
+}
+.nombre{
+    display: flex;
+    justify-content: right;
+    align-items: flex-start;
+}

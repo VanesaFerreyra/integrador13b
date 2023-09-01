@@ -1,13 +1,13 @@
 .container{
-    border: none;
-    border-radius: 2em;
+    border-radius: 2px;
     display: flex;
-    justify-content: center;
+    justify-content:space-around;
     align-items: center;
-    width: 90vw;
+    width: 100%;
     flex-wrap:wrap;
-    padding: 2em ;
+    padding: 2px ;
+    margin: 100px;
     margin-bottom: 2em;
-    height: fit-content;
-    background-color: rgb(192, 142, 239);
+    height: full;
+    
 }

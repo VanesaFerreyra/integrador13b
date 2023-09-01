@@ -8,15 +8,15 @@ function Detail(){
     const [charDetail, setCharDetail] = useState({})
 
     useEffect(()=> {
-      fetch(`http://localhost:3000/rickandmorty/character/${id}`)
+      fetch(`http://localhost:3001/rickandmorty/character/${id}`)
         .then(response => response.json())
         .then((data) => {
       if (data.name) {
          setCharDetail(data);
-      } else {
-         alert(data.error);
+      }else{
+         alert(data.error)
       }
-   });
+   })
    return setCharDetail({});
     },[id])
     
