@@ -44,7 +44,7 @@ function App() {
          return;
       }
       try {
-         const{ data } = await axios(`${URL}/character/${id}`)
+         const{ data } = await axios(`${URL}character/${id}`)
 
          setCharacters(oldChars => [...oldChars, data])
 
